@@ -41,7 +41,10 @@ class WeatherService {
     }
   }
   // TODO: Create destructureLocationData method
-  // private destructureLocationData(locationData: Coordinates): Coordinates {}
+  private destructureLocationData(locationData: Coordinates): Coordinates {
+    const { lat, lon } = locationData.city.coord;
+    return { lat, lon };
+  }
   // TODO: Create buildGeocodeQuery method
   // private buildGeocodeQuery(): string {}
   // TODO: Create buildWeatherQuery method

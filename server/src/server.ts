@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import path from 'path';
 dotenv.config();
 
 // Import the routes
@@ -10,7 +11,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // TODO: Serve static files of entire client dist folder
-app.use(express.static('client/dist'));
+app.use(express.static('../client/dist'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+})
 
 
 

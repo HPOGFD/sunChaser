@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises';
 import dotenv from 'dotenv';
 dotenv.config();
 

@@ -20,6 +20,15 @@ class Weather {
 // TODO: Complete the WeatherService class
 class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
+  private baseURL?: string;
+  private apiKey?: string;
+  private cityName?: string;
+
+  constructor() {
+    this.baseURL = process.env.WEATHER_API_BASE_URL || '';
+    this.apiKey = process.env.WEATHER_API_KEY || '';
+    this.cityName = process.env.CITY_NAME || '';
+  }
   // TODO: Create fetchLocationData method
   // private async fetchLocationData(query: string) {}
   // TODO: Create destructureLocationData method

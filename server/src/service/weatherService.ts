@@ -79,7 +79,18 @@ class WeatherService {
     return currentWeather;
   }
   // TODO: Complete buildForecastArray method
-  // private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
+  private buildForecastArray(currentWeather: Weather, weatherData: any[]) {
+    const forecastArray: Weather[] = [currentWeather];
+    for (let i = 1; i < 6; i++) {
+      const forecast = new Weather();
+      forecast.city = this.cityName;
+      forecast.temperature = weatherData[i].temp.day;
+      forecast.windSpeed = weatherData[i].wind_speed;
+      forecast.humidity = weatherData[i].humidity;
+      forecastArray.push(forecast);
+    }
+    return forecastArray;
+  }
   // TODO: Complete getWeatherForCity method
   // async getWeatherForCity(city: string) {}
 }

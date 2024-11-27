@@ -10,10 +10,10 @@ interface Coordinates {
 
 // TODO: Define a class for the Weather object
 class Weather {
-  city: string;
-  temperature: number;
-  windSpeed: number;
-  humidity: number;
+  city!: string;
+  temperature!: number;
+  windSpeed!: number;
+  humidity!: number;
 
 }
 

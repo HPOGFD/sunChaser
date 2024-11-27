@@ -7,6 +7,10 @@ import WeatherService from '../../service/weatherService.js';
 
 // TODO: POST Request with city name to retrieve weather data
 router.post('/', (req, res) => {
+  const { city } = req.body;
+   if (!city){
+    res.status(400).json({message: 'City name is required'});
+   }
   // TODO: GET weather data from city name
   // TODO: save city to search history
 });

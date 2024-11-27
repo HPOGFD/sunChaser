@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -41,9 +41,9 @@ class WeatherService {
     }
   }
   // TODO: Create destructureLocationData method
-  private destructureLocationData(locationData: Coordinates): Coordinates {
-    const { lat, lon } = locationData.city.coord;
-    return { lat, lon };
+  private destructureLocationData(locationData: any): Coordinates {
+      const { lat, lon } = locationData.coord;
+      return { lat, lon };
   }
   // TODO: Create buildGeocodeQuery method
   private buildGeocodeQuery(): string {
@@ -55,7 +55,7 @@ class WeatherService {
   }
   // TODO: Create fetchAndDestructureLocationData method
   private async fetchAndDestructureLocationData() {
-    const locationData = await this.fetchLocationData(this.cityName);
+    const locationData = await this.fetchLocationData(this.cityName || '');
     return this.destructureLocationData(locationData);
   }
   // TODO: Create fetchWeatherData method
@@ -72,7 +72,7 @@ class WeatherService {
   // TODO: Build parseCurrentWeather method
   private parseCurrentWeather(response: any) {
     const currentWeather = new Weather();
-    currentWeather.city = this.cityName;
+    currentWeather.city = this.cityName || 'Unknown City';
     currentWeather.temperature = response.current.temp;
     currentWeather.windSpeed = response.current.wind_speed;
     currentWeather.humidity = response.current.humidity;
@@ -83,7 +83,7 @@ class WeatherService {
     const forecastArray: Weather[] = [currentWeather];
     for (let i = 1; i < 6; i++) {
       const forecast = new Weather();
-      forecast.city = this.cityName;
+      forecast.city = this.cityName || 'Unknown City';
       forecast.temperature = weatherData[i].temp.day;
       forecast.windSpeed = weatherData[i].wind_speed;
       forecast.humidity = weatherData[i].humidity;

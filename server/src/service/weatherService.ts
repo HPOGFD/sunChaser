@@ -54,7 +54,10 @@ class WeatherService {
     return `${this.baseURL}onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}&units=metric&lang=en`;
   }
   // TODO: Create fetchAndDestructureLocationData method
-  // private async fetchAndDestructureLocationData() {}
+  private async fetchAndDestructureLocationData() {
+    const locationData = await this.fetchLocationData(this.cityName);
+    return this.destructureLocationData(locationData);
+  }
   // TODO: Create fetchWeatherData method
   // private async fetchWeatherData(coordinates: Coordinates) {}
   // TODO: Build parseCurrentWeather method

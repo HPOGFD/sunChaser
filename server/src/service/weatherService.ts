@@ -59,7 +59,16 @@ class WeatherService {
     return this.destructureLocationData(locationData);
   }
   // TODO: Create fetchWeatherData method
-  // private async fetchWeatherData(coordinates: Coordinates) {}
+  private async fetchWeatherData(coordinates: Coordinates) {
+    try {
+      const response = await fetch(this.buildWeatherQuery(coordinates));
+      const weatherData = await response.json();
+      return weatherData;
+    } catch (error) {
+      console.error(`Error fetching weather data: ${error}`);
+    }
+
+  }
   // TODO: Build parseCurrentWeather method
   // private parseCurrentWeather(response: any) {}
   // TODO: Complete buildForecastArray method

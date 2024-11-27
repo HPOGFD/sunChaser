@@ -46,7 +46,9 @@ class WeatherService {
     return { lat, lon };
   }
   // TODO: Create buildGeocodeQuery method
-  // private buildGeocodeQuery(): string {}
+  private buildGeocodeQuery(): string {
+    return `${this.baseURL}geocode?q=${this.cityName}&appid=${this.apiKey}`;
+  }
   // TODO: Create buildWeatherQuery method
   // private buildWeatherQuery(coordinates: Coordinates): string {}
   // TODO: Create fetchAndDestructureLocationData method

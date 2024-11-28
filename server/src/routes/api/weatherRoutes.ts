@@ -7,20 +7,21 @@ import WeatherService from '../../service/weatherService.js';
 
 // TODO: POST Request with city name to retrieve weather data
 router.post('/', async (req, res) => {
-  const { city } = req.body;
-   if (!city){
+  const { cityName } = req.body;
+   if (!cityName){
     res.status(400).json({message: 'City name is required'});
    }
    try {
     // Get weather data using WeatherService
-    const weatherData = await WeatherService.getWeatherForCity(city);
+    const weatherData = await WeatherService.getWeatherForCity(cityName);
 
     // Save city to search history using HistoryService
-    await HistoryService.addCity(city);
+    const historyEntry = await HistoryService.addCityToHistory(cityName);
 
-    res.status(200).json({ weather: weatherData, message: 'City saved to history' });
+    res.status(200).json([weatherData, historyEntry]);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to retrieve weather data', error: (error as Error).message });
+    console.error('Error retrieving weather data:', error);
+    res.status(500).json({ message: 'Error retrieving weather data' });
   }
 });
 
@@ -28,21 +29,28 @@ router.post('/', async (req, res) => {
 // TODO: GET search history
 router.get('/history', async (_req, res) => {
   try {
-    const history = await HistoryService.getCities();
+    const history = await HistoryService.getSearchHistory();
     res.status(200).json(history);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to retrieve search history', error: (error as Error).message });
+    console.error('Error fetching search history:', error);
+    res.status(500).json({ message: 'Error fetching search history' });
   }
 });
 
 // * BONUS TODO: DELETE city from search history
 router.delete('/history/:id', async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-    await HistoryService.removeCity(id);
-    res.status(200).json({ message: `City with ID ${id} deleted successfully` });
+    const result = await HistoryService.deleteCityFromHistory(id);
+    if (result) {
+      res.status(200).json({ message: 'City removed from history' });
+    } else {
+      res.status(404).json({ message: 'City not found in history' });
+    }
   } catch (error) {
-    res.status(500).json({ message: 'Failed to delete city from history', error: (error as Error).message });
+    console.error('Error deleting city from history:', error);
+    res.status(500).json({ message: 'Error deleting city from history' });
   }
 });
 

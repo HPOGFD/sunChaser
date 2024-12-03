@@ -46,13 +46,13 @@ class WeatherService {
 
   // Build the geocode query string to get the city's coordinates
   private buildGeocodeQuery(query: string): string {
-    return `${this.baseURL}/geo/1.0/direct?q=${query}&limit=1&appid=${this.apiKey}`;
+    return `${this.baseURL}geo/1.0/direct?q=${query}&limit=1&appid=${this.apiKey}`;
   }
 
   // Build the weather query string to get the weather data for the given coordinates
   private buildWeatherQuery(coordinates: Coordinates): string {
     const { lat, lon } = coordinates;
-    return `${this.baseURL}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`;
+    return `${this.baseURL}weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`;
   }
 
   // Fetch and destructure location data

@@ -29,7 +29,7 @@ class Weather {
 class WeatherService {
   private baseURL = process.env.API_BASE_URL || ''; // Base URL for the OpenWeather API
   private apiKey = process.env.API_KEY || ''; // API key from .env file
-
+  
   // Fetch location data (latitude and longitude) for a given city name
   private async fetchLocationData(query: string): Promise<Coordinates> {
     const geocodeURL = this.buildGeocodeQuery(query);
@@ -43,17 +43,17 @@ class WeatherService {
     const { lat, lon } = locationData[0]; // Assuming the response contains an array with city coordinates
     return { lat, lon };
   }
+// Build the geocode query string to get the city's coordinates
+private buildGeocodeQuery(query: string): string {
+  return `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${this.apiKey}`;
+}
 
-  // Build the geocode query string to get the city's coordinates
-  private buildGeocodeQuery(query: string): string {
-    return `${this.baseURL}geo/1.0/direct?q=${query}&limit=1&appid=${this.apiKey}`;
-  }
+// Build the weather query string to get the 5-day forecast for the given coordinates
+private buildWeatherQuery(coordinates: Coordinates): string {
+  const { lat, lon } = coordinates;
+  return `${this.baseURL}forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`;
+}
 
-  // Build the weather query string to get the weather data for the given coordinates
-  private buildWeatherQuery(coordinates: Coordinates): string {
-    const { lat, lon } = coordinates;
-    return `${this.baseURL}weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`;
-  }
 
   // Fetch and destructure location data
   private async fetchAndDestructureLocationData(query: string): Promise<Coordinates> {

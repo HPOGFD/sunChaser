@@ -113,8 +113,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## 🙏 Acknowledgments
 
 - OpenWeatherMap for providing weather data API
-- Icons provided by [Weather Icons](https://weathericons.io)
-- ChatGPT
+- ChatGPT for never getting tired of my questions.
 
 ## 📞 Support
 

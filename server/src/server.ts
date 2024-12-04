@@ -1,6 +1,11 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 
@@ -13,7 +18,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 
 // TODO: Implement middleware for parsing JSON and urlencoded form data

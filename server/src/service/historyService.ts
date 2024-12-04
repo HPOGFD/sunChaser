@@ -8,12 +8,12 @@ interface City {
 }
 
 class HistoryService {
-  private historyFilePath = path.resolve('data', 'searchHistory.json'); // Path to the searchHistory.json file
+  private historyFilePath = path.resolve('db/searchHistory.json'); // Path to the searchHistory.json file
 
   // Read the data from searchHistory.json
   private async read(): Promise<City[]> {
     try {
-      const data = await fs.promises.readFile(this.historyFilePath, 'utf-8');
+      const data = await fs.promises.readFile(this.historyFilePath, 'utf8');
       return JSON.parse(data);
     } catch (err) {
       console.error('Error reading the search history file:', err);

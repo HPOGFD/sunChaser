@@ -71,7 +71,8 @@ private buildWeatherQuery(coordinates: Coordinates): string {
 
   // Parse the current weather data into a Weather object
   private parseCurrentWeather(response: any): Weather {
-    const { main, weather, wind } = response;
+    console.log(response);  
+    const { main, weather, wind } = response.list[0];
     const temperature = main.temp;
     const description = weather[0].description;
     const humidity = main.humidity;

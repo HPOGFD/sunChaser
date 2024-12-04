@@ -77,7 +77,8 @@ Render Functions
 */
 
 const renderCurrentWeather = (currentWeather: any): void => {
-  const { city, date, icon, iconDescription, tempF, windSpeed, humidity } =
+  console.log(currentWeather);
+  const { city, date, icon, iconDescription, temperature:tempF, windSpeed, humidity } =
     currentWeather;
 
   // convert the following to typescript

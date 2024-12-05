@@ -115,10 +115,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - OpenWeatherMap for providing weather data API
 - ChatGPT for never getting tired of my questions.
 
-## 📞 Support
-
-For support, email support@sunchaser.com or join our Slack channel.
-
 ---
 
 Made with ❤️ by Harry P Oyarvide

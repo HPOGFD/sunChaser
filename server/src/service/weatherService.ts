@@ -80,16 +80,7 @@ private buildWeatherQuery(coordinates: Coordinates): string {
     const icon = weather[0].icon;
     return new Weather(temperature, description, humidity, windSpeed, icon);
   }
-  private buildForecastArray(weatherData: any[]): Weather[] {
-    return weatherData.map((data: any) => {
-      const temperature = data.main.temp;
-      const description = data.weather[0].description;
-      const humidity = data.main.humidity;
-      const windSpeed = data.wind.speed;
-      const icon = data.weather[0].icon;
-      return new Weather(temperature, description, humidity, windSpeed, icon);
-    });
-  }
+
   
 
   // Get weather for a city by name

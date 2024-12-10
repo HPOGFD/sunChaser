@@ -6,6 +6,9 @@ dotenv.config();
 interface Coordinates {
   lat: number;
   lon: number;
+  name: string;
+  country: string;
+  state: string;
 }
 
 // Define a class for the Weather object
@@ -15,13 +18,18 @@ class Weather {
   humidity: number;
   windSpeed: number;
   icon: string;
+  city: string;
+  date: string;
 
-  constructor(temperature: number, description: string, humidity: number, windSpeed: number, icon: string) {
+
+  constructor(temperature: number, description: string, humidity: number, windSpeed: number, icon: string, city: string, date: string) {
     this.temperature = temperature;
     this.description = description;
     this.humidity = humidity;
     this.windSpeed = windSpeed;
     this.icon = icon;
+    this.city = city;
+    this.date = date;
   }
 }
 

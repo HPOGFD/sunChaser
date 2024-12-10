@@ -1,1 +1,14 @@
-[]
+[
+	{
+		"name": "new york",
+		"id": "921c1620-5a04-4603-aa16-1f0c818d6dc8"
+	},
+	{
+		"name": "dallas",
+		"id": "1eb2d81d-0dbd-4a33-bd52-7cc92fa627a1"
+	},
+	{
+		"name": "san diego",
+		"id": "19fd3a4e-9dd0-4ac9-ba4a-f6dd1ad6c96b"
+	}
+]

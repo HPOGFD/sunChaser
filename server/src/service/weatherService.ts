@@ -37,6 +37,7 @@ class Weather {
 class WeatherService {
   private baseURL = process.env.API_BASE_URL || ''; // Base URL for the OpenWeather API
   private apiKey = process.env.API_KEY || ''; // API key from .env file
+
   
   // Fetch location data (latitude and longitude) for a given city name
   private async fetchLocationData(query: string): Promise<Coordinates> {
@@ -49,7 +50,8 @@ class WeatherService {
   // Destructure the location data (city coordinates)
   private destructureLocationData(locationData: any): Coordinates {
     const { lat, lon } = locationData[0]; // Assuming the response contains an array with city coordinates
-    return { lat, lon };
+    const { name, country, state } = locationData[0];
+    return { lat, lon, name, country, state };
   }
 // Build the geocode query string to get the city's coordinates
 private buildGeocodeQuery(query: string): string {
@@ -86,7 +88,9 @@ private buildWeatherQuery(coordinates: Coordinates): string {
     const humidity = main.humidity;
     const windSpeed = wind.speed;
     const icon = weather[0].icon;
-    return new Weather(temperature, description, humidity, windSpeed, icon);
+    const city = response.city.name;
+    const date = response.list[0].dt_txt;
+    return new Weather(temperature, description, humidity, windSpeed, icon, city, date);
   }
 
   

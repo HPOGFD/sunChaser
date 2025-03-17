@@ -1,0 +1,48 @@
+/* Container style */
+.weather-container {
+  background: linear-gradient(135deg, #FFD700, #F0E68C, #87CEFA, #DAA520, #2F4F4F); /* Yellow to Sand to Blue to Dark Gold to Dark */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.weather-container h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Weather icon */
+.weather-container img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+}
+
+/* Temperature */
+.weather-container .temperature {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Condition */
+.weather-container .condition {
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+/* Additional details for current weather */
+.weather-container .additional-info p {
+  margin: 4px 0;
+  font-size: 0.875rem;
+}
+
+/* Precipitation for forecast weather */
+.weather-container .precipitation {
+  margin-top: 8px;
+}
